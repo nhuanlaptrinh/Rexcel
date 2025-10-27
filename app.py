@@ -115,14 +115,14 @@ if uploaded_file is not None:
             
             st.dataframe(
                 display_df,
-                use_container_width=True,
+                width='stretch',
                 hide_index=not show_index
             )
             
             # Thống kê mô tả
             if st.checkbox("📈 Hiển thị thống kê mô tả"):
                 st.subheader("Thống kê mô tả")
-                st.dataframe(df.describe(), use_container_width=True)
+                st.dataframe(df.describe(), width='stretch')
             
             # Thông tin về các cột
             if st.checkbox("ℹ️ Thông tin về các cột"):
@@ -133,7 +133,7 @@ if uploaded_file is not None:
                     'Số giá trị null': df.isnull().sum(),
                     'Số giá trị unique': df.nunique()
                 })
-                st.dataframe(col_info, use_container_width=True)
+                st.dataframe(col_info, width='stretch')
             
             # Tìm kiếm và lọc dữ liệu
             st.subheader("🔍 Tìm kiếm và lọc dữ liệu")
@@ -145,7 +145,7 @@ if uploaded_file is not None:
                 filtered_df = df[mask]
                 st.write(f"Tìm thấy {len(filtered_df)} dòng chứa '{search_term}'")
                 if not filtered_df.empty:
-                    st.dataframe(filtered_df, use_container_width=True)
+                    st.dataframe(filtered_df, width='stretch')
             
             # Xuất dữ liệu
             st.subheader("💾 Xuất dữ liệu")
@@ -206,7 +206,7 @@ else:
         'Thành phố': ['Hà Nội', 'TP.HCM', 'Đà Nẵng'],
         'Lương': [15000000, 20000000, 25000000]
     })
-    st.dataframe(sample_data, use_container_width=True)
+    st.dataframe(sample_data, width='stretch')
 
 # Footer
 st.markdown("---")
